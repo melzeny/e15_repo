@@ -11,15 +11,15 @@ const PORT_PinType PORT_PinGroup[PORT_ACTIVATED_PINS_NUMBER] =
 		/*  {Port_Channel_A0, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_A1, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_A2, Dir_Input, Mode_Dio },  */
-		  	{Port_Channel_A3, Dir_Input, Mode_Dio },
+		/*  	{Port_Channel_A3, Dir_Input, Mode_Dio }, */
 		/*  {Port_Channel_A4, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_A5, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_A6, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_A7, Dir_Input, Mode_Dio },  */
         /*             Group B                        */
 		/*  {Port_Channel_B0, Dir_Input, Mode_Dio },  */
-		    {Port_Channel_B1, Dir_Input, Mode_Dio },
-		    {Port_Channel_B2, Dir_Input, Mode_Dio }
+		/*   {Port_Channel_B1, Dir_Input, Mode_Dio }, */
+		 /*   {Port_Channel_B2, Dir_Input, Mode_Dio }, */
 		/*  {Port_Channel_B3, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_B4, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_B5, Dir_Input, Mode_Dio },  */
@@ -35,13 +35,13 @@ const PORT_PinType PORT_PinGroup[PORT_ACTIVATED_PINS_NUMBER] =
 		/*  {Port_Channel_C6, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_C7, Dir_Input, Mode_Dio },  */
         /*            Group D                         */
-		/*  {Port_Channel_D0, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_D1, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_D2, Dir_Input, Mode_Dio },  */
+		  {Port_Channel_D0, Dir_Input, Mode_Dio },
+		  {Port_Channel_D1, Dir_Input, Mode_Dio },
+		  {Port_Channel_D2, Dir_Input, Mode_Dio },
 		/*  {Port_Channel_D3, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_D4, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_D5, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_D6, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_D7, Dir_Input, Mode_Dio }   */
+		  {Port_Channel_D5, Dir_Output, Mode_Dio },
+		  {Port_Channel_D6, Dir_Output, Mode_Dio },
+		  {Port_Channel_D7, Dir_Output, Mode_Dio }
 
 };
