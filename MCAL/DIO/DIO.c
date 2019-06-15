@@ -132,8 +132,7 @@ void Dio_WritePort( Dio_PortType PortId, uint8 value)
 	default:
 		/*error*/
 		break;
-
-
+	}
 }
 void Dio_FlipChannel( Dio_ChannelType ChannelId)
 {
@@ -182,4 +181,5 @@ void Dio_FlipPort(Dio_PortType PortId)
 	default:
 		/*error*/
 		break;
+	}
 }
