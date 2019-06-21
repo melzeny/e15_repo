@@ -7,6 +7,15 @@
 #include "../MCAL/PORT_DRIVER/PORT_types.h"
 #include "PORT_cfg.h"
 
+/*********************************************************************
+ * un-comment the activated pin
+ * choose from the following to set Direction
+ * 				Dir_Input
+ * 				Dir-Output
+ * choose from the following to set the Mode
+ * 				Mode_Dio
+ *
+ * *******************************************************************/
 const PORT_PinType PORT_PinGroup[PORT_ACTIVATED_PINS_NUMBER] =
 {
 		/*             Group A                        */
@@ -37,7 +46,7 @@ const PORT_PinType PORT_PinGroup[PORT_ACTIVATED_PINS_NUMBER] =
 		/*  {Port_Channel_C6, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_C7, Dir_Input, Mode_Dio },  */
         /*            Group D                         */
-		  {Port_Channel_D0, Dir_Input, Mode_Dio },
+		  {Port_Channel_D0, Dir_Input, Mode_Dio_With_Pullup_Res },
 		  {Port_Channel_D1, Dir_Input, Mode_Dio },
 		  {Port_Channel_D2, Dir_Input, Mode_Dio },
 		/*  {Port_Channel_D3, Dir_Input, Mode_Dio },  */

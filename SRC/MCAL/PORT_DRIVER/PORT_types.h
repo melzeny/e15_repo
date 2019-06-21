@@ -57,6 +57,7 @@ typedef enum
 typedef enum
 {
 	Mode_Dio,
+	Mode_Dio_With_Pullup_Res,
 	Mode_Adc
 }PORT_PinModeType;
 
