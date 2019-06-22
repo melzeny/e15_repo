@@ -16,7 +16,7 @@
  * Please define the maximum number of activated GPIOS in Range [1-32]
  *
  * *******************************************************************/
-#define PORT_ACTIVATED_PINS_NUMBER							6
+#define PORT_ACTIVATED_PINS_NUMBER							9
 
 
 

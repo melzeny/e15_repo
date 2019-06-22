@@ -17,12 +17,18 @@ typedef signed short int sint16;
 typedef signed long int sint32;
 
 typedef float float32;
-typedef double float64;
 
 typedef enum
 {
 	STD_low,
 	STD_high
 }STD_levelType;
+
+typedef enum
+{
+	false,
+	true
+}boolean;
+
 
 #endif /* E15_LAB_SRC_UTILS_STD_TYPES_H_ */

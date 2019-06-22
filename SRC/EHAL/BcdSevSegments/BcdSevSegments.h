@@ -8,6 +8,8 @@
 #ifndef E15_REPO_SRC_EHAL_BCDSEVSEGMENTS_BCDSEVSEGMENTS_H_
 #define E15_REPO_SRC_EHAL_BCDSEVSEGMENTS_BCDSEVSEGMENTS_H_
 
+#include "../../utils/STD_Types.h"
+
 void BcdSevSeg_Init(void);
 void BcdSevSeg_DisplayNum(uint8 num);
 void BcdSevSeg_1_en(void);
