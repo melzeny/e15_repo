@@ -13,8 +13,9 @@
 void SevSeg_Init(void);
 void SevSeg_DisplayNum(uint8 num);
 void SevSeg_1_en(void);
-void SevSeg_di(void);
+void SevSeg_1_di(void);
 void SevSeg_2_en(void);
 void SevSeg_2_di(void);
+
 
 #endif /* E15_REPO_SRC_EHAL_SEVSEG_SEVSEG_H_ */

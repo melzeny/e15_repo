@@ -19,14 +19,14 @@
 const PORT_PinType PORT_PinGroup[PORT_ACTIVATED_PINS_NUMBER] =
 {
 		/*             Group A                        */
-		/*  {Port_Channel_A0, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A1, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A2, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A3, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A4, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A5, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A6, Dir_Input, Mode_Dio },  */
-		/*  {Port_Channel_A7, Dir_Input, Mode_Dio },  */
+		 {Port_Channel_A0, Dir_Output, Mode_Dio },
+		 {Port_Channel_A1, Dir_Output, Mode_Dio },
+		 {Port_Channel_A2, Dir_Output, Mode_Dio },
+		 {Port_Channel_A3, Dir_Output, Mode_Dio },
+		 {Port_Channel_A4, Dir_Input, Mode_Dio_With_Pullup_Res },
+		 {Port_Channel_A5, Dir_Input, Mode_Dio_With_Pullup_Res },
+		 {Port_Channel_A6, Dir_Input, Mode_Dio_With_Pullup_Res },
+		 {Port_Channel_A7, Dir_Input, Mode_Dio_With_Pullup_Res },
         /*             Group B                        */
 		/*  {Port_Channel_B0, Dir_Input, Mode_Dio },  */
 		/*  {Port_Channel_B1, Dir_Input, Mode_Dio },  */
