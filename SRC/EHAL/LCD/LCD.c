@@ -141,6 +141,17 @@ void LCD_writeCmd(uint8 u8Cmd)
 }
 void LCD_writeString(uint8* str,uint8 row,uint8 col)
 {
+	uint8 i =0;
+	LCD_goToPos(row,col);
+	while(str[i]!='\0' && i<LCD_MAX_NUMBER_OF_CHR)
+	{
+		LCD_writeCharData(str[i]);
+		i++;
+	}
+}
 
-
+void LCD_goToPos(uint8 row,uint8 col)
+{
+	/* LCD_writeCmd(0x80 | ((row<<6) | col) ) */
+	LCD_writeCmd(0x80 | ((row*0x40) + col) );
 }
