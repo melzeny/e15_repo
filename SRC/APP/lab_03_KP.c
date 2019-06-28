@@ -22,13 +22,11 @@ void lab_03_KP(void)
 		SevSeg_2_di();
 		SevSeg_DisplayNum(DisNum % 10 );
 		SevSeg_1_en();
-
 		_delay_ms(5);
 
 		SevSeg_1_di();
 		SevSeg_DisplayNum(DisNum / 10 );
 		SevSeg_2_en();
-
 		_delay_ms(5);
 
 	}
