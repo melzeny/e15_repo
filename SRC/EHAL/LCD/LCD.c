@@ -144,9 +144,9 @@ void LCD_writeString(uint8* str,uint8 row,uint8 col)
 	uint8 i =0;
 	LCD_goToPos(row,col);
 	while(str[i]!='\0' && i<LCD_MAX_NUMBER_OF_CHR)
-	{
-		LCD_writeCharData(str[i]);
-		i++;
+	{;
+	LCD_writeCharData(str[i]);
+	i++;
 	}
 }
 
@@ -154,4 +154,23 @@ void LCD_goToPos(uint8 row,uint8 col)
 {
 	/* LCD_writeCmd(0x80 | ((row<<6) | col) ) */
 	LCD_writeCmd(0x80 | ((row*0x40) + col) );
+}
+void LCD_storeCustomChr(uint8* Ptr2CustomChr,uint8 CGRAM_index)
+{
+	uint8 i;
+	if(CGRAM_index < 8)
+	{
+		/*make AC points to CGRAM address*/
+		LCD_writeCmd(0x40 | CGRAM_index*8);
+		for(i=0;i<8;i++)
+		{
+			LCD_writeCharData(Ptr2CustomChr[i]);
+		}
+		LCD_writeCmd(LCD_CMD_RETURN_HOME);
+	}
+}
+void LCD_DisplayCustomChr(uint8 CGRAM_index,uint8 row,uint8 col)
+{
+	LCD_goToPos(row,col);
+	LCD_writeCharData(CGRAM_index);
 }

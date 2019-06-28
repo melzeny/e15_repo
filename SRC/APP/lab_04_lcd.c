@@ -9,9 +9,11 @@
 #include "../EHAL/LCD/LCD.h"
 void lab_04_lcd(void)
 {
+	uint8 mArr[8]={0, 0, 31, 5, 7, 0, 0, 0};
 	PORT_init();
 	LCD_init();
-	LCD_writeCharData('a');
+	LCD_storeCustomChr(mArr,0);
+	LCD_DisplayCustomChr(0,0,0);
 	while(1)
 	{
 		;
