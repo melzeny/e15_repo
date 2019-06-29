@@ -15,8 +15,8 @@
 #define EXTI_INT1_EDGE		EXTI_Edge_Rising
 #define EXTI_INT2_EDGE		EXTI_Edge_Falling
 
-#define EXTI_INT0_EN		ENABEL
-#define EXTI_INT1_EN		ENABEL
-#define EXTI_INT2_EN		DISABLE
+#define EXTI_INT0_EN		ENABLE
+#define EXTI_INT1_EN		ENABLE
+#define EXTI_INT2_EN		ENABLE
 
 #endif /* E15_REPO_SRC_CONFIG_EXTI_CFG_H_ */
