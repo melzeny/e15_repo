@@ -30,5 +30,7 @@ typedef enum
 	true
 }boolean;
 
+#define ENABLE			1
+#define DISABLE			0
 
 #endif /* E15_LAB_SRC_UTILS_STD_TYPES_H_ */
