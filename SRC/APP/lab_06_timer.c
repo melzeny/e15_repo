@@ -1,30 +1,30 @@
 /*
- * lab_05_Exti.c
+ * lab_06_timer.c
  *
- *  Created on: Jun 29, 2019
+ *  Created on: Jul 5, 2019
  *      Author: Muhammad.Elzeiny
  */
-
 #include "../MCAL/PORT_DRIVER/PORT.h"
 #include "../MCAL/DIO/DIO.h"
-#include "../MCAL/EXTI/EXTI.h"
+#include "../MCAL/TIMER0/TIMER0.h"
 #include "../MCAL/GLOBAL_INTERRUPT/GI.h"
 #include "../utils/Compiler.h"
 
-void lab_05_Exti(void)
+void lab_06_timer(void)
 {
-
 	PORT_init();
-	EXTI_init();
+	TIMER0_init();
 	GI_EN();
+
 	while(1)
 	{
+
 		;
 	}
 
 }
-
-void ISR(EXTI_INT0)
+void ISR(TIMER0_COMP)
 {
-	Dio_FlipChannel(Dio_Channel_D6);
+	Dio_FlipChannel(Dio_Channel_A4);
+
 }
