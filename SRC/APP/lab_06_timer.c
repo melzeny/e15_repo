@@ -13,8 +13,9 @@
 void lab_06_timer(void)
 {
 	PORT_init();
-	TIMER0_init();
 	GI_EN();
+	TIMER0_init();
+
 
 	while(1)
 	{
@@ -23,8 +24,4 @@ void lab_06_timer(void)
 	}
 
 }
-void ISR(TIMER0_COMP)
-{
-	Dio_FlipChannel(Dio_Channel_A4);
 
-}

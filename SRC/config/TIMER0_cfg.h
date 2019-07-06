@@ -10,7 +10,7 @@
 
 
 #define TIMER0_PRESCALER_SELECTOR_msk		TIMER0_PRESCALER_64_msk
-
+#define TIMER0_STEPS_TO_COUNT				250
 /*
  * Choose mode from following list:-
  *
@@ -21,7 +21,7 @@
  * */
 #define TIMER0_MODE_TYPE_SELECTOR_msk		TIMER0_MODE_CTC_msk
 
-#define TIMER0_STEPS_TO_COUNT				250
+
 
 
 #endif /* F15_REPO_SRC_CONFIG_TIMER0_CFG_H_ */

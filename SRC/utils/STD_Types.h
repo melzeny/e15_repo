@@ -30,6 +30,8 @@ typedef enum
 	true
 }boolean;
 
+typedef void(*Ptr2FuncType)(void);
+
 #define ENABLE			1
 #define DISABLE			0
 
