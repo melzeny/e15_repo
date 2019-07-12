@@ -1,0 +1,82 @@
+/*
+ * TIMER2.c
+ *
+ *  Created on: Jul 5, 2019
+ *      Author: Muhammad.Elzeiny
+ */
+/*
+ * =============================================
+ * Private Defines
+ * ============================================*/
+#define TIMER2_PRESCALER_CLR_msk		0b11111000
+#define TIMER2_PRESCALER_1_msk			0b00000001
+#define TIMER2_PRESCALER_8_msk			0b00000010
+#define TIMER2_PRESCALER_64_msk			0b00000011
+#define TIMER2_PRESCALER_256_msk		0b00000100
+#define TIMER2_PRESCALER_1024_msk		0b00000101
+
+#define TIMER2_MODE_CLR_msk				0b10110111
+#define TIMER2_MODE_NORMAL_msk			0b00000000
+#define TIMER2_MODE_PHASE_CORRECT_msk	0b01000000
+#define TIMER2_MODE_CTC_msk				0b00001000
+#define TIMER2_MODE_FAST_PWM_msk		0b01001000
+/* =============================================
+ * INCLUDES
+ * ============================================*/
+#include "../../utils/Bit_Math.h"
+#include "../../utils/STD_Types.h"
+#include "../../config/TIMER2_cfg.h"
+#include "TIMER2_hw.h"
+#include "TIMER2.h"
+
+/* =============================================
+ * FUNCTIONS DEFINITIONS
+ * ============================================*/
+void TIMER2_init(void)
+{
+
+	/* set timer mode */
+	TCCR2 &= TIMER2_MODE_CLR_msk;
+	TCCR2 |= TIMER2_MODE_TYPE_SELECTOR_msk;
+
+	/*set Steps to count */
+	TIMER2_setCounterSteps(TIMER2_STEPS_TO_COUNT);
+
+	/*enable Interrupt */
+	TIMER2_enInterrupt();
+
+	/*set Pre-scaler*/
+	TCCR2 &= TIMER2_PRESCALER_CLR_msk;
+	TCCR2 |= TIMER2_PRESCALER_SELECTOR_msk;
+
+}
+
+void TIMER2_enInterrupt(void)
+{
+#if TIMER2_MODE_TYPE_SELECTOR_msk == TIMER2_MODE_CTC_msk
+	SET_BIT(TIMSK,7);
+#elif
+	SET_BIT(TIMSK,6);
+#endif
+}
+void TIMER2_diInterrupt(void)
+{
+#if TIMER2_MODE_TYPE_SELECTOR_msk == TIMER2_MODE_CTC_msk
+	CLR_BIT(TIMSK,7);
+#elif
+	CLR_BIT(TIMSK,6);
+#endif
+}
+void TIMER2_setCounterSteps(uint8 StepsToCount)
+{
+#if TIMER2_MODE_TYPE_SELECTOR_msk == TIMER2_MODE_CTC_msk
+	OCR2 = StepsToCount;
+	TCNT2 = 0x00 ;
+#elif TIMER2_MODE_TYPE_SELECTOR_msk == TIMER2_MODE_NORMAL_msk
+	TCNT2 = 255 - StepsToCount;
+#endif
+}
+uint8 TIMER2_readCounterSteps(void)
+{
+	return TCNT2;
+}
