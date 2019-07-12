@@ -6,7 +6,10 @@
  */
 
 #include "../../utils/STD_Types.h"
+#include "../../utils/Interrupts.h"
+#include "../../MCAL/GLOBAL_INTERRUPT/GI.h"
 #include "../../MCAL/DIO/DIO.h"
+#include "../../MCAL/TIMER2/TIMER2.h"
 #include "../../config/Servo_cfg.h"
 #include "Servo.h"
 
@@ -15,10 +18,11 @@ static uint8 Ton_Steps,Toff_Steps_div_2;
 
 void SERVO_init(void)
 {
-
+	GI_EN();
 	TIMER2_init();
-	Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_high);
 	TIMER2_setCounterSteps(Ton_Steps);
+	Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_high);
+
 
 }
 void SERVO_setAngle(uint8 Angle)
