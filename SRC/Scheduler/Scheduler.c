@@ -11,11 +11,11 @@
 #include "../utils/STD_Types.h"
 #include "../MCAL/TIMER0/TIMER0.h"
 #include "../MCAL/GLOBAL_INTERRUPT/GI.h"
-#include "../utils/Compiler.h"
-
 #include "../config/Scheduler_cfg.h"
 #include "Scheduler_types.h"
 #include "Scheduler.h"
+
+#include "../utils/Interrupts.h"
 /*========================================
  * LOCAL PROTOTYPES FUNCTIONS
  * ======================================*/

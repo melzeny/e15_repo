@@ -9,7 +9,7 @@
 #include "../MCAL/DIO/DIO.h"
 #include "../MCAL/EXTI/EXTI.h"
 #include "../MCAL/GLOBAL_INTERRUPT/GI.h"
-#include "../utils/Compiler.h"
+#include "../utils/Interrupts.h"
 
 void lab_05_Exti(void)
 {

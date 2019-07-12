@@ -8,7 +8,7 @@
 #include "../MCAL/DIO/DIO.h"
 #include "../MCAL/TIMER2/TIMER2.h"
 #include "../MCAL/GLOBAL_INTERRUPT/GI.h"
-#include "../utils/Compiler.h"
+#include "../utils/Interrupts.h"
 
 void lab_06_timer(void)
 {
@@ -25,10 +25,4 @@ void lab_06_timer(void)
 
 }
 
-void ISR(TIMER2_COMP)
-{
 
-
-
-
-}

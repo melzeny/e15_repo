@@ -5,8 +5,8 @@
  *      Author: Muhammad.Elzeiny
  */
 
-#ifndef E15_REPO_SRC_UTILS_COMPILER_H_
-#define E15_REPO_SRC_UTILS_COMPILER_H_
+#ifndef E15_REPO_SRC_UTILS_INTERRUPTS_H_
+#define E15_REPO_SRC_UTILS_INTERRUPTS_H_
 
 #define EXTI_INT0				   	__vector_1
 #define EXTI_INT1				   	__vector_2
@@ -20,4 +20,4 @@
 
 
 
-#endif /* E15_REPO_SRC_UTILS_COMPILER_H_ */
+#endif /* E15_REPO_SRC_UTILS_INTERRUPTS_H_ */
