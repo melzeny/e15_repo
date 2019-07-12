@@ -14,7 +14,7 @@ void lab_06_timer(void)
 {
 	PORT_init();
 	GI_EN();
-	TIMER0_init();
+	TIMER2_init();
 
 
 	while(1)
