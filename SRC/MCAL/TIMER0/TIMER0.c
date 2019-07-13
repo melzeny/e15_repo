@@ -35,6 +35,10 @@
 void TIMER0_init(void)
 {
 
+	/*set Pre-scaler*/
+	TCCR0 &= TIMER0_PRESCALER_CLR_msk;
+	TCCR0 |= TIMER0_PRESCALER_SELECTOR_msk;
+
 	/* set timer mode */
 	TCCR0 &= TIMER0_MODE_CLR_msk;
 	TCCR0 |= TIMER0_MODE_TYPE_SELECTOR_msk;
@@ -45,9 +49,6 @@ void TIMER0_init(void)
 	/*enable Interrupt */
 	TIMER0_enInterrupt();
 
-	/*set Pre-scaler*/
-	TCCR0 &= TIMER0_PRESCALER_CLR_msk;
-	TCCR0 |= TIMER0_PRESCALER_SELECTOR_msk;
 
 }
 

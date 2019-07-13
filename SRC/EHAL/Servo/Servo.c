@@ -14,38 +14,36 @@
 #include "Servo.h"
 
 
-static uint8 Ton_Steps,Toff_Steps_div_2;
+static uint8 Ton_Steps=255,Toff_Steps_div_2=255;
 
 void SERVO_init(void)
 {
 	GI_EN();
+
 	TIMER2_init();
 	TIMER2_setCounterSteps(Ton_Steps);
-	Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_high);
-
-
+	Dio_WriteChannel(Dio_Channel_A1,STD_high);
 }
 void SERVO_setAngle(uint8 Angle)
 {
 	Ton_Steps =( (Angle * (SERVO_MAX_ANGLE_STEPS-SERVO_MIN_ANGLE_STEPS)) / SERVO_MAX_ANGLE_DEGREE ) +SERVO_MIN_ANGLE_STEPS;
 	Toff_Steps_div_2 = SERVO_PWM_SIGNAL_DUARTION_steps_div_2 - (Ton_Steps/2);
-
-
 }
+
 void ISR(TIMER2_COMP)
 {
 	static uint8 counter =0;
 	counter++;
 	if(counter == 1)
 	{
-		Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_low);
+		Dio_WriteChannel(Dio_Channel_A1,STD_low);
 		TIMER2_setCounterSteps(Toff_Steps_div_2);
 	}
 	else if (counter == 3)
 	{
-		Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_high);
+		Dio_WriteChannel(Dio_Channel_A1,STD_high);
 		TIMER2_setCounterSteps(Ton_Steps);
 		counter = 0;
 	}
-
 }
+

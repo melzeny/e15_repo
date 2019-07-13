@@ -10,8 +10,9 @@
 void lab_08_servo(void)
 {
 	PORT_init();
+	SERVO_setAngle(150);
 	SERVO_init();
-	SERVO_setAngle(0);
+
 	while(1)
 	{
 
