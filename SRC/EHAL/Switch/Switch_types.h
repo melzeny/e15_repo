@@ -31,6 +31,10 @@ typedef struct
 	SW_NameType 		Name;
 	Dio_ChannelType 	Channel;
 	SW_ActiveModeType	ModeType;
+	uint8				SW_DebounceCounter;
+	SW_StatusType		CurrStatus;
+	SW_StatusType		PrevStatus;
+	SW_StatusType		FinalStatus;
 }SW_SwitchType;
 
 

@@ -8,7 +8,7 @@
 #ifndef F15_REPO_SRC_CONFIG_SWITCH_CFG_H_
 #define F15_REPO_SRC_CONFIG_SWITCH_CFG_H_
 
-
+#define SWITCH_DEBOUNCE_COUNTER				5
 typedef enum
 {
 	SW_Name_0,

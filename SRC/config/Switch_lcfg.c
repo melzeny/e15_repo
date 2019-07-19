@@ -22,7 +22,7 @@
  ==================================================================================================*/
 
 
-const SW_SwitchType SW_CfgArr[SW_MaxNumOfSwitches] =
+SW_SwitchType SW_CfgArr[SW_MaxNumOfSwitches] =
 {
 		{SW_Name_0, Dio_Channel_C0, Active_low},
 		{SW_Name_1, Dio_Channel_C1, Active_low},

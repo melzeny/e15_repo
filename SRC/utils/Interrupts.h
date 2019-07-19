@@ -15,7 +15,10 @@
 #define TIMER2_OVF					__vector_5
 #define TIMER0_COMP					__vector_10
 #define TIMER0_OVF					__vector_11
-
+#define TIMER1_CAPT					__vector_6
+#define TIMER1_COMPA				__vector_7
+#define TIMER1_COMPB				__vector_8
+#define TIMER1_OVF					__vector_9
 
 
 #define ISR(vector)				   	vector(void) __attribute__((signal,used));\
