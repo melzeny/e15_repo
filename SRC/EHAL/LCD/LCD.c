@@ -3,8 +3,8 @@
  *
  *  Created on: Jun 28, 2019
  *      Author: Muhammad.Elzeiny
+ *
  */
-
 #define LCD_MODE_4_PIN		0
 #define LCD_MODE_8_PIN		1
 

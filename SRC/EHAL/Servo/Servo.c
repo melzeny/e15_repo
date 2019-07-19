@@ -4,6 +4,8 @@
  *  Created on: Jul 12, 2019
  *      Author: Muhammad.Elzeiny
  */
+/*give unique number to servo module to use Timer2 ISR */
+#define ISR_USER_SERVO_DRIVER			337
 
 #include "../../utils/STD_Types.h"
 #include "../../utils/Interrupts.h"
@@ -14,36 +16,54 @@
 #include "Servo.h"
 
 
-static uint8 Ton_Steps=255,Toff_Steps_div_2=255;
+static uint8 Ton_Steps=255,Toff_Steps=255;
 
 void SERVO_init(void)
 {
 	GI_EN();
-
 	TIMER2_init();
-	TIMER2_setCounterSteps(Ton_Steps);
-	Dio_WriteChannel(Dio_Channel_A1,STD_high);
 }
 void SERVO_setAngle(uint8 Angle)
 {
-	Ton_Steps =( (Angle * (SERVO_MAX_ANGLE_STEPS-SERVO_MIN_ANGLE_STEPS)) / SERVO_MAX_ANGLE_DEGREE ) +SERVO_MIN_ANGLE_STEPS;
-	Toff_Steps_div_2 = SERVO_PWM_SIGNAL_DUARTION_steps_div_2 - (Ton_Steps/2);
+	/*
+	 * apply First Degree Linear equation
+	 *
+	 * x-x1   x2-x1
+	 * ---- = ----
+	 * y-y1   y2-y1
+	 *
+	 * assume x:Ton_Steps	x1:SERVO_MIN_ANGLE_STEPS	x2:SERVO_MAX_ANGLE_STEPS
+	 *        y:Angle		y1:SERVO_MIN_ANGLE_DEGREE   y2:SERVO_MAX_ANGLE_DEGREE
+	 * */
+	Ton_Steps = (
+				( (Angle - SERVO_MIN_ANGLE_DEGREE) * (SERVO_MAX_ANGLE_STEPS - SERVO_MIN_ANGLE_STEPS) )
+			/*------------------------------------------------------------------------------------------*/
+				/ ( SERVO_MAX_ANGLE_DEGREE - SERVO_MIN_ANGLE_DEGREE )
+				)
+				+   SERVO_MIN_ANGLE_STEPS;
+	Toff_Steps = SERVO_PWM_SIGNAL_DUARTION_STEPS_DIV_BY_FACTOR - Ton_Steps/SERVO_PWM_SIGNAL_FACTOR;
 }
 
+
+#if (TIMER2_COMP_USER == ISR_USER_SERVO_DRIVER)
 void ISR(TIMER2_COMP)
 {
 	static uint8 counter =0;
-	counter++;
-	if(counter == 1)
+	if(counter == 0)
 	{
-		Dio_WriteChannel(Dio_Channel_A1,STD_low);
-		TIMER2_setCounterSteps(Toff_Steps_div_2);
+		TIMER2_setCounterSteps((uint8)Toff_Steps);
+		Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_low);
+		counter++;
 	}
-	else if (counter == 3)
+	else if (counter == SERVO_PWM_SIGNAL_FACTOR+1)
 	{
-		Dio_WriteChannel(Dio_Channel_A1,STD_high);
-		TIMER2_setCounterSteps(Ton_Steps);
+		TIMER2_setCounterSteps((uint8)Ton_Steps);
+		Dio_WriteChannel(SERVO_SIGNAL_PIN,STD_high);
 		counter = 0;
 	}
+	else
+	{
+		counter++;
+	}
 }
-
+#endif

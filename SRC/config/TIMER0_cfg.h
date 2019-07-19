@@ -10,7 +10,7 @@
 
 
 #define TIMER0_PRESCALER_SELECTOR_msk		TIMER0_PRESCALER_1024_msk
-#define TIMER0_STEPS_TO_COUNT				250
+#define TIMER0_STEPS_TO_COUNT				156
 /*
  * Choose mode from following list:-
  *

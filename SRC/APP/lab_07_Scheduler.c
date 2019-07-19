@@ -25,7 +25,7 @@ void Task_1(void)
 void lab_07_Scheduler(void)
 {
 	PORT_init();
-	Scheduler_createTask(Task_1,1);
+	Scheduler_createTask(0,Task_1,1,STD_Active);
 	Scheduler_init();
 	while(1)
 	{

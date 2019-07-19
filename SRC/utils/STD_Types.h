@@ -20,19 +20,26 @@ typedef float float32;
 
 typedef enum
 {
-	STD_low,
-	STD_high
+	STD_low=0,
+	STD_high=!STD_low
 }STD_levelType;
 
 typedef enum
 {
-	false,
-	true
+	STD_Suspended=0,
+	STD_Active=!STD_Suspended
+}STD_StatusType;
+
+typedef enum
+{
+	false=0,
+	true=!false
 }boolean;
 
 typedef void(*Ptr2FuncType)(void);
 
-#define ENABLE			1
 #define DISABLE			0
+#define ENABLE			1
+
 
 #endif /* E15_LAB_SRC_UTILS_STD_TYPES_H_ */

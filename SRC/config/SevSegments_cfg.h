@@ -8,6 +8,15 @@
 #ifndef E15_REPO_SRC_CONFIG_SEVSEGMENTS_CFG_H_
 #define E15_REPO_SRC_CONFIG_SEVSEGMENTS_CFG_H_
 
+/*================================================================================
+ * SevSegments Dependencies
+ * DIO Driver
+ * PORT Driver 	: 1- all used pins shall be configured as OUTPUT
+ * 				: 2- PORT Driver shall be initialized before using this module
+ ================================================================================*/
+
+
+
 #define SevSeg_PIN_a			Dio_Channel_C0
 #define SevSeg_PIN_b			Dio_Channel_C1
 #define SevSeg_PIN_c			Dio_Channel_C2

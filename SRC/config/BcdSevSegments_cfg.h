@@ -8,6 +8,12 @@
 #ifndef E15_REPO_SRC_CONFIG_BCDSEVSEGMENTS_CFG_H_
 #define E15_REPO_SRC_CONFIG_BCDSEVSEGMENTS_CFG_H_
 
+/*================================================================================
+ * BcdSevSegments Dependencies
+ * DIO Driver
+ * PORT Driver 	: 1- all used pins shall be configured as OUTPUT
+ * 				: 2- PORT Driver shall be initialized before using this module
+ ================================================================================*/
 /*
  * Please choose Dio_pins to be connected
  *

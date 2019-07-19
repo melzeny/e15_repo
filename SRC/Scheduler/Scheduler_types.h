@@ -13,8 +13,10 @@
  * ======================================*/
 typedef struct
 {
+	uint8 TaskId;
 	Ptr2FuncType Ptr2Task;
 	uint32 Periodicity;
+	STD_StatusType TaskStatus;
 }Scheduler_TaskType;
 
 #endif /* E15_REPO_SRC_SCHEDULER_SCHEDULER_TYPES_H_ */

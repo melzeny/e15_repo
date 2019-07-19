@@ -8,7 +8,12 @@
 #include "../../config/KP_cfg.h"
 #include "KP.h"
 
-static uint8 PressedButton=-1;
+static uint8 PressedButton=KP_RELEASED;
+static const uint8 KP_MapArr[16] = {
+		KP_BUTON_0,KP_BUTON_1,KP_BUTON_2,KP_BUTON_3,
+		KP_BUTON_4,KP_BUTON_5,KP_BUTON_6,KP_BUTON_7,
+		KP_BUTON_8,KP_BUTON_9,KP_BUTON_10,KP_BUTON_11,
+		KP_BUTON_12,KP_BUTON_13,KP_BUTON_14,KP_BUTON_15};
 
 static void CheckCol(uint8 ActivatedRow)
 {
@@ -35,7 +40,7 @@ static void CheckCol(uint8 ActivatedRow)
 }
 uint8 KP_getPressedButton(void)
 {
-	PressedButton =255;
+	PressedButton =KP_RELEASED;
 	/*activate row 0*/
 	Dio_WriteChannel(KP_PIN_R0,KP_ACTIVATE_TYPE);
 	Dio_WriteChannel(KP_PIN_R1,!KP_ACTIVATE_TYPE);
@@ -64,6 +69,6 @@ uint8 KP_getPressedButton(void)
 	Dio_WriteChannel(KP_PIN_R3,KP_ACTIVATE_TYPE);
 	CheckCol(3);
 
-	return PressedButton;
+	return ( ( PressedButton==KP_RELEASED ) ? KP_RELEASED : KP_MapArr[PressedButton] );
 
 }

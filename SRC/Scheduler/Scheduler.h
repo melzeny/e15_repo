@@ -13,7 +13,13 @@
  * ======================================*/
 #include "../utils/STD_Types.h"
 
-void Scheduler_createTask(Ptr2FuncType Task,uint32 TaskPeriodicity);
 void Scheduler_init(void);
+
+void Scheduler_createTask(uint8 TaskId,Ptr2FuncType TaskPtr,
+		uint32 TaskPeriodicity,STD_StatusType TaskStatus);
+
+void Scheduler_setTaskStatus(uint8 Id,STD_StatusType Status);
+void Scheduler_setTaskPeriodicity(uint8 Id,uint32 Periodicity);
+
 
 #endif /* E15_REPO_SRC_SCHEDULER_SCHEDULER_H_ */

@@ -8,6 +8,13 @@
 #ifndef E15_REPO_SRC_CONFIG_LCD_CFG_H_
 #define E15_REPO_SRC_CONFIG_LCD_CFG_H_
 
+/*================================================================================
+ * LCD Dependencies
+ * DIO Driver
+ * PORT Driver 	: 1- all used pins shall be configured as OUTPUT
+ * 				: 2- PORT Driver shall be initialized before using this module
+ ================================================================================*/
+
 
 /*
  * define LCD_ mode with the following options
