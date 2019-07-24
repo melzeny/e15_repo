@@ -71,9 +71,6 @@ void TIMER2_init(void)
 	/*set Steps to count */
 	TIMER2_setCounterSteps(TIMER2_STEPS_TO_COUNT);
 
-	/*enable Interrupt */
-	TIMER2_enInterrupt();
-
 }
 
 void TIMER2_enInterrupt(void)

@@ -24,7 +24,7 @@
 #define ISR(vector)				   	vector(void) __attribute__((signal,used));\
 									void vector(void)
 
-#define TIMER2_COMP_USER			ISR_USER_SERVO_DRIVER
+#define TIMER2_COMP_USER			0
 
 
 #endif /* E15_REPO_SRC_UTILS_INTERRUPTS_H_ */

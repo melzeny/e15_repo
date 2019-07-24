@@ -35,34 +35,31 @@
 #include "TIMER1_types.h"
 #include "TIMER1.h"
 
+static uint16 t0_steps,t1_steps,t2_steps,SingleStep_time_us;
+static uint32 TIMER1_Freq_Hz;
+static uint8 TIMER1_DutyCycle_per;
+
 
 void TIMER1_init(void)
 {
-	/*set mode*/
+
+
+	/*set mode - nonPWM */
 	TCCR1B &= TIMER1_MODE_clr_msk;
 	TCCR1B |= TIMER1_MODE_SELECTOR;
 
-	/*set edge mode for ICU*/
+	/*set edge mode for ICU */
 	TCCR1B &= TIMER1_ICU_EDGE_clr_msk;
 	TCCR1B |= TIMER1_ICU_EDGE_SELECTOR;
 
-	/*enable Interrupt*/
-	GI_EN();
-#if TIMER1_INT_CAPT_EN
-	TIMER1_enInterrupt(TIMER1_INT_ICR);
-#endif
-#if TIMER1_INT_COMPA_EN
-	TIMER1_enInterrupt(TIMER1_INT_OCRA);
-#endif
-#if TIMER1_INT_COMPB_EN
-	TIMER1_enInterrupt(TIMER1_INT_OCRB);
-#endif
-#if TIMER1_INT_OVF_EN
-	TIMER1_enInterrupt(TIMER1_INT_OVF);
-#endif
+	/*set steps*/
+	OCR1A = TIMER1_COMPARE_STEP_A;
+	OCR1B = TIMER1_COMPARE_STEP_B;
+
 	/*set prescaler */
 	TCCR1B &= TIMER1_PRESCALER_clr_msk;
 	TCCR1B |= TIMER1_PRESCALER_SELECTOR;
+
 }
 void TIMER1_enInterrupt(TIMER1_IntType Int)
 {
@@ -110,33 +107,39 @@ void TIMER1_diInterrupt(TIMER1_IntType Int)
 void TIMER1_readPwm(uint32* FreqPtr_Khz,uint8* DutyCyclePtr)
 {
 
+	*FreqPtr_Khz = TIMER1_Freq_Hz;
+	*DutyCyclePtr =  TIMER1_DutyCycle_per;
 }
 void ISR(TIMER1_CAPT)
 {
 	static uint8 flag = 0;
 	if(flag == 0)
 	{
-		/*set edg to falling */
-
+		/*set edge to falling */
+		CLR_BIT(TCCR1B,6);
 		/* copy ICR in t0 */
-
+		t0_steps = ICR;
 		flag =1;
 	}
 	else if (flag == 1)
 	{
 		/* set edge rising */
-
+		SET_BIT(TCCR1B,6);
 		/*copy ICR in t1*/
-
+		t1_steps = ICR;
 		flag = 2;
 	}
 	else
 	{
-		/* set edge to rising */
+		/* set edge to rising ( already set ) */
 
 		/* copy ICR in t2 */
-
+		t2_steps = ICR;
 		flag =0;
+
+		/* calculate freq and duty cycle */
+		TIMER1_Freq_Hz = 1000000 / ( TIMER1_SINGLE_STEP_TIME_us * (t2_steps - t0_steps) );
+		TIMER1_DutyCycle_per = 100 * (t1_steps - t0_steps) / (t2_steps - t0_steps) ;
 	}
 }
 void ISR(TIMER1_COMPA)

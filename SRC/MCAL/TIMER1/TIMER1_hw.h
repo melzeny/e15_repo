@@ -9,14 +9,15 @@
 #define E15_REPO_SRC_MCAL_TIMER1_TIMER1_HW_H_
 
 
-#define TCCR1A			*((volatile uint8*)0x4F)
-#define TCCR1B			*((volatile uint8*)0x4E)
-#define TCNT1			*((volatile uint16*)0x4C)
-#define OCR1A			*((volatile uint16*)0x4A)
-#define OCR1B			*((volatile uint16*)0x48)
-#define ICR1			*((volatile uint16*)0x46)
-#define TIMSK			*((volatile uint8*)0x59)
-#define TIFR			*((volatile uint8*)0x58)
+#define TIMSK		*((volatile uint8*)0x59)
+#define TIFR		*((volatile uint8*)0x58)
+#define TCCR1A		*((volatile uint8*)0x4F)
+#define TCCR1B		*((volatile uint8*)0x4E)
+
+#define TCNT1		*((volatile uint16*)0x4C)
+#define OCR1A		*((volatile uint16*)0x4A)
+#define OCR1B		*((volatile uint16*)0x48)
+#define ICR			*((volatile uint16*)0x46)
 
 /*
 * address of TCNT1H ==> 0x4D

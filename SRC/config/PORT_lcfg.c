@@ -52,7 +52,7 @@ const PORT_PinType PORT_PinGroup[PORT_ACTIVATED_PINS_NUMBER] =
 		{Port_Channel_D3, Dir_Input, Mode_Dio },
 		{Port_Channel_D4, Dir_Input, Mode_Dio },
 		{Port_Channel_D5, Dir_Output, Mode_Dio },
-		{Port_Channel_D6, Dir_Output, Mode_Dio },
+		{Port_Channel_D6, Dir_Input, Mode_Dio },
 		{Port_Channel_D7, Dir_Output, Mode_Dio }
 
 };

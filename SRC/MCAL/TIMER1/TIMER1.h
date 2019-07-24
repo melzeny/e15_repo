@@ -14,6 +14,6 @@
 void TIMER1_init(void);
 void TIMER1_enInterrupt(TIMER1_IntType Int);
 void TIMER1_diInterrupt(TIMER1_IntType Int);
-void TIMER1_readPwm(uint32* FreqPtr_Khz,uint8* DutyCyclePtr);
+void TIMER1_readPwm(uint32* FreqPtr_Hz,uint8* DutyCyclePtr);
 
 #endif /* E15_REPO_SRC_MCAL_TIMER1_TIMER1_H_ */
