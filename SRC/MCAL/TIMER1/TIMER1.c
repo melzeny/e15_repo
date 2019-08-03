@@ -110,7 +110,7 @@ void TIMER1_readPwm(uint32* FreqPtr_Hz,uint8* DutyCyclePtr)
 	*FreqPtr_Hz = TIMER1_Freq_Hz;
 	*DutyCyclePtr =  TIMER1_DutyCycle_per;
 }
-void TIMER1_getHiLevelTime(void)
+uint32 TIMER1_getHiLevelTime(void)
 {
 	return (ton_steps*TIMER1_SINGLE_STEP_TIME_us);
 
