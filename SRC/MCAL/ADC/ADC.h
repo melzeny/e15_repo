@@ -11,8 +11,7 @@
 #include "../../utils/STD_Types.h"
 #include "ADC_types.h"
 
-void ADC_init(void);
-void ADC_StartCon(DCS_Ch_type Channel);
+void ADC_init(DCS_Ch_type Channel);
 uint16 ADC_ReadChannel(DCS_Ch_type Channel);
 void ADC_enInterrupt(void);
 void ADC_diInterrupt(void);

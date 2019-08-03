@@ -41,7 +41,6 @@
  * ========================================================*/
 #define ADC_Prescaler_clr_msk		         		0b11111000
 #define ADC_Prescaler_2_msk			         		0b00000000
-#define ADC_Prescaler_2_msk			         		0b00000001
 #define ADC_Prescaler_4_msk			         		0b00000010
 #define ADC_Prescaler_8_msk			         		0b00000011
 #define ADC_Prescaler_16_msk		         		0b00000100
@@ -67,7 +66,6 @@
 #define ADC_StartConversion							6
 #define ADC_InterruptFlag							4
 #define ADC_InterruptEnable_pin						3
-#define F_CPU										16000000
 
 void ADC_init(DCS_Ch_type Channel)
 {

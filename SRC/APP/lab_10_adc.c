@@ -19,12 +19,10 @@ void lab_10_ADC(void)
 	uint16 Value;
 	uint8 counter=5;
 	uint8 Str[counter];
-	ADC_init();
+	ADC_init(ADC_A1);
 	PORT_init();
 	LCD_init();
 	Value=ADC_ReadChannel(ADC_A1);
-	ADC_StartCon(ADC_A1);
-
 	while(1)
 	{
 		LCD_writeCmd(0x01);

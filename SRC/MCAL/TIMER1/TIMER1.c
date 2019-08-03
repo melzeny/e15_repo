@@ -35,7 +35,7 @@
 #include "TIMER1_types.h"
 #include "TIMER1.h"
 
-static uint16 t0_steps,t1_steps,t2_steps,SingleStep_time_us;
+static uint16 t0_steps,ton_steps,toff_steps,SingleStep_time_us;
 static uint32 TIMER1_Freq_Hz;
 static uint8 TIMER1_DutyCycle_per;
 
@@ -110,6 +110,11 @@ void TIMER1_readPwm(uint32* FreqPtr_Hz,uint8* DutyCyclePtr)
 	*FreqPtr_Hz = TIMER1_Freq_Hz;
 	*DutyCyclePtr =  TIMER1_DutyCycle_per;
 }
+void TIMER1_getHiLevelTime(void)
+{
+	return (ton_steps*TIMER1_SINGLE_STEP_TIME_us);
+
+}
 void ISR(TIMER1_CAPT)
 {
 	static uint8 flag = 0;
@@ -118,7 +123,8 @@ void ISR(TIMER1_CAPT)
 		/*set edge to falling */
 		CLR_BIT(TCCR1B,6);
 		/* copy ICR in t0 */
-		t0_steps = ICR;
+		TCNT1 = 0;
+		t0_steps = 0;
 		flag =1;
 	}
 	else if (flag == 1)
@@ -126,7 +132,7 @@ void ISR(TIMER1_CAPT)
 		/* set edge rising */
 		SET_BIT(TCCR1B,6);
 		/*copy ICR in t1*/
-		t1_steps = ICR;
+		ton_steps = ICR;
 		flag = 2;
 	}
 	else
@@ -134,12 +140,12 @@ void ISR(TIMER1_CAPT)
 		/* set edge to rising ( already set ) */
 
 		/* copy ICR in t2 */
-		t2_steps = ICR;
+		toff_steps = ICR;
 		flag =0;
 
 		/* calculate freq and duty cycle */
-		TIMER1_Freq_Hz = 1000000 / ( TIMER1_SINGLE_STEP_TIME_us * (t2_steps - t0_steps) );
-		TIMER1_DutyCycle_per = 100 * (t1_steps - t0_steps) / (t2_steps - t0_steps) ;
+		TIMER1_Freq_Hz = 1000000 / ( TIMER1_SINGLE_STEP_TIME_us * (toff_steps - t0_steps) );
+		TIMER1_DutyCycle_per = 100 * (ton_steps - t0_steps) / (toff_steps - t0_steps) ;
 	}
 }
 void ISR(TIMER1_COMPA)
